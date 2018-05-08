@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-
 <launch>
+
+  <arg name="rviz" default="true" />
 
   <!-- Ground segmentation -->
   <node name="ground_segmentation" pkg="linefit_ground_segmentation_ros" type="ground_segmentation_node" output="screen">
@@ -11,5 +12,9 @@
     <param name="ground_output_topic" value="ground_cloud" />
     <param name="obstacle_output_topic" value="obstacle_cloud" />
   </node>
+
+  <group if="$(arg rviz)">
+    <node launch-prefix="nice" pkg="rviz" type="rviz" name="rviz" args="-d $(find linefit_ground_segmentation_ros)/rviz/ground_segmentation.rviz" />
+  </group>
 
 </launch>
