@@ -7,11 +7,6 @@ catkin_simple(ALL_DEPS_REQUIRED)
 
 add_definitions(-std=c++11 -g)
 
-find_package(PCL REQUIRED)
-include_directories(${PCL_INCLUDE_DIRS})
-link_directories(${PCL_LIBRARY_DIRS})
-add_definitions(${PCL_DEFINITIONS})
-
 add_executable(ground_segmentation_node src/ground_segmentation_node.cc)
 add_executable(ground_segmentation_test_node src/ground_segmentation_test_node.cc)
 target_link_libraries(ground_segmentation_node ${catkin_LIBRARIES} ${PCL_LIBRARIES})
